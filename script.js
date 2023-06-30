@@ -10,28 +10,29 @@ let operandTwo = "";
 let result = "";
 
 const display = () => {
-  if (currentOperand.length < 14 && result === "") {
+  if (currentOperand.length < 14 && operator === "") {
     currentOperand = currentOperand + digit;
     operandOne = currentOperand;
-    screenDown.textContent = operandOne;
+    screenDown.textContent = currentOperand;
   } else if (
     currentOperand.length < 14 &&
     (operandOne !== "" || result !== "")
   ) {
-    currentOperand = currentOperand + digit;
+    currentOperand = "";
+    currentOperand = operandTwo + digit;
     operandTwo = currentOperand;
-    screenDown.textContent = `${operator} ${currentOperand}`;
+    screenDown.textContent = `${operator} ${operandTwo}`;
     if (result === "") {
       if (operandOne % 1 === 0) {
         screenUp.textContent = `${operandOne}`;
       } else {
-        screenUp.textContent = `${parseFloat(operandOne.toFixed(4))}`;
+        screenUp.textContent = `${parseFloat(operandOne).toFixed(4)}`;
       }
     } else {
       if (result % 1 === 0) {
         screenUp.textContent = `${result}`;
       } else {
-        screenUp.textContent = `${parseFloat(result.toFixed(4))}`;
+        screenUp.textContent = `${parseFloat(result).toFixed(4)}`;
       }
     }
   }
@@ -127,5 +128,36 @@ buttons.forEach((button) => {
     } else if (ev.target.classList.contains("backspace")) {
       backspace();
     }
+  });
+});
+
+window.addEventListener("keydown", (ev) => {
+  ev.preventDefault();
+  const key = ev.code;
+
+  buttons.forEach((button) => {
+    if (button.id === key) {
+      if (button.classList.contains("digit")) {
+        digit = button.textContent;
+        display();
+      } else if (button.classList.contains("oper")) {
+        operator = button.textContent;
+        operation();
+      } else if (button.classList.contains("eval")) {
+        operation();
+        screenUp.textContent = "";
+        screenDown.textContent = result;
+      } else if (button.classList.contains("dot")) {
+        if (!checkDot()) {
+          digit = button.textContent;
+          display();
+        }
+      } else if (button.classList.contains("reset")) {
+        reset();
+      } else if (button.classList.contains("backspace")) {
+        backspace();
+      }
+    }
+    return;
   });
 });

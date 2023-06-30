@@ -55,10 +55,27 @@ main {
   flex-direction: row-reverse;
   justify-content: flex-start;
   align-items: center;
-  padding: 7px;
-  overflow: hidden;
+  padding-top: 7px;
+  overflow: scroll;
   background-color: var(--SC-MAIN);
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--BGC-ALT);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--BTNC-HOVER);
+}
+::-webkit-scrollbar-corner {
+  opacity: 0;
+}
+
 .numbers {
   display: flex;
   flex-direction: column;
