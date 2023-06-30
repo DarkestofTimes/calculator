@@ -1,0 +1,150 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* VAR */
+:root {
+  --BGC-MAIN: #745296;
+  --C-MAIN: #84bcda;
+  --BGC-ALT: #23001e;
+  --BGC-PANEL: #6d466b;
+  --C-ALT: ;
+  --SC-MAIN: #d2d6ef;
+  --BTNC-HOVER: #6eeb83;
+  --BTNC-ACTIVE: #ef5b5b;
+  --BTNC-OPEATOR: #e07a5f;
+  --BTNC-DIGIT: hsl(234, 26%, 55%);
+  --BTNC-UTILITY: #3581b8;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--BGC-ALT);
+  background-image: linear-gradient(
+    90deg,
+    var(--BGC-ALT),
+    var(--BTNC-UTILITY),
+    var(--BGC-ALT)
+  );
+}
+.calc-container {
+  width: min(100%, 360px);
+  border: 5px solid black;
+  border-radius: 10px;
+  height: min(90%, 600px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--BGC-MAIN);
+}
+
+.screen {
+  height: 100px;
+  width: 95%;
+  border: 3px solid black;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 0px inset;
+  margin: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 7px;
+  overflow: hidden;
+  background-color: var(--SC-MAIN);
+}
+.numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.operator {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.screen__p {
+  font-size: 1.7rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.up {
+  opacity: 0.7;
+}
+
+.down {
+  font-size: 2.3rem;
+  user-select: all;
+}
+
+.panel {
+  width: 95%;
+  height: min(80%, 500px);
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 7px;
+  padding: 7px;
+  background-color: var(--BGC-PANEL);
+}
+
+.button {
+  display: grid;
+  place-content: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 3px 3px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--C-ALT);
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--BTNC-HOVER);
+}
+.button:active {
+  background-color: var(--BTNC-ACTIVE);
+  transform: scale(0.9);
+}
+
+.footer {
+  text-align: center;
+  padding-bottom: 5px;
+}
+.zero {
+  grid-column: span 2;
+}
+.eval {
+  grid-row: 4 / 6;
+  grid-column: 4 / 5;
+}
+
+.digit {
+  background-color: var(--BTNC-DIGIT);
+}
+.dot {
+  background-color: var(--BTNC-DIGIT);
+}
+
+.oper {
+  background-color: var(--BTNC-OPEATOR);
+}
+.util {
+  background-color: var(--BTNC-UTILITY);
+}
+.footer {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--C-MAIN);
+}
